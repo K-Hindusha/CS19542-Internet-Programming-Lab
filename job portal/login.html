@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign Up</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container {
+            padding: 20px;
+            display: none; /* Hide all forms initially */
+        }
+
+        .form-container.active {
+            display: block; /* Show active form */
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .input-group i {
+            margin-right: 10px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .preferences {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .pointer {
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="row">
+            <div class="form-container sign-up active">
+                <form action="" method="post" id="signupForm">
+                    <h2>Create Account</h2>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username" required />
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" name="email" required />
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" required />
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm password" name="confirm_password" required />
+                    </div>
+                    <div class="preferences">
+                        <label>
+                            <input type="checkbox" value="A" name="check_recruit" />
+                            Recruiter
+                        </label>
+                        <label>
+                            <input type="checkbox" value="B" name="user" />
+                            Jobseeker
+                        </label>
+                    </div>
+                    <button type="submit" name="signup" onclick="window.location.href='index.html'; return false;">Sign Up</button>
+                    <p>
+                        Already have an account?
+                        <button type="button" onclick="toggle()">Sign In</button>
+                    </p>
+                </form>
+            </div>
+
+            <div class="form-container sign-in">
+                <form action="" method="post">
+                    <h2>Sign In</h2>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username" required />
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" required />
+                    </div>
+                    <div class="preferences">
+                        <label>
+                            <input type="checkbox" value="A" name="check_recruit" />
+                            Recruiter
+                        </label>
+                        <label>
+                            <input type="checkbox" value="B" name="user" />
+                            Jobseeker
+                        </label>
+                    </div>
+                    <button type="submit" name="signin" onclick="window.location.href='index.html'; return false;">Sign In</button>
+                    <p>
+                        <b>Forgot password?</b>
+                    </p>
+                    <p>
+                        Don't have an account?
+                        <button type="button" onclick="toggle()">Sign Up</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggle() {
+            const signUpForm = document.querySelector('.sign-up');
+            const signInForm = document.querySelector('.sign-in');
+
+            signUpForm.classList.toggle('active');
+            signInForm.classList.toggle('active');
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            const password = this.password.value;
+            const confirmPassword = this.confirm_password.value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

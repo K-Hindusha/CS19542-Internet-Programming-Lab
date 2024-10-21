@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "C:/xampp/htdocs/jobportal-php-mysql-main/jobportal-php-mysql-main/lib"
+		},
+		{
+			"path": "C:/xampp/htdocs/jobportal-php-mysql-main/jobportal-php-mysql-main/img"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "job portal"
+	}
+}
